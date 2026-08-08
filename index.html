@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta name="theme-color" content="#000000">
+
+    <title>Happy Birthday ❤️</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Film grain -->
+    <div class="grain"></div>
+
+    <!-- Stars -->
+    <div id="stars"></div>
+
+
+    <!-- =========================
+         PASSWORD SCREEN
+    ========================== -->
+
+    <section id="passwordScreen" class="password-screen">
+
+        <div class="password-content">
+
+            <div class="lock">🔐</div>
+
+            <div class="private-text">
+                PRIVATE SURPRISE
+            </div>
+
+            <h1>
+                This is
+                <span>just for you.</span>
+            </h1>
+
+            <p>
+                Enter the secret password to continue.
+            </p>
+
+            <div class="password-box">
+
+                <input
+                    id="passwordInput"
+                    type="password"
+                    placeholder="ENTER PASSWORD"
+                    autocomplete="off"
+                >
+
+                <button id="unlockBtn">
+                    UNLOCK
+                </button>
+
+            </div>
+
+            <div id="passwordError">
+                Wrong password ❤️
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         INTRO
+    ========================== -->
+
+    <section id="intro" class="scene intro-scene">
+
+        <div class="intro-content">
+
+            <div class="intro-small">
+                A LITTLE SURPRISE FOR YOU
+            </div>
+
+            <h1 class="wait">
+                WAIT...
+            </h1>
+
+            <div id="typing" class="typing"></div>
+
+            <button id="startBtn" class="main-button">
+                TAP TO BEGIN
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         NAME REVEAL
+    ========================== -->
+
+    <section id="nameScene" class="scene">
+
+        <div class="name-content">
+
+            <div class="tiny-gold">
+                TODAY
+            </div>
+
+            <p>
+                isn't just another day
+            </p>
+
+            <h1 class="hero-name">
+                ABHIGNA
+            </h1>
+
+            <div class="gold-line"></div>
+
+            <span>
+                because someone special
+                was born today
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MESSAGE
+    ========================== -->
+
+    <section id="messageScene" class="scene">
+
+        <div class="message-content">
+
+            <div class="message-number">
+                01
+            </div>
+
+            <div class="short-line"></div>
+
+            <h2>
+                Some people make
+                the world a little
+                brighter...
+            </h2>
+
+            <h3>
+                simply by being in it.
+            </h3>
+
+            <div class="message-highlight">
+                You're one of them. ❤️
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         WISHES
+    ========================== -->
+
+    <section id="wishScene" class="scene">
+
+        <div class="wish-content">
+
+            <div class="tiny">
+                SO TODAY...
+            </div>
+
+            <h2>
+                I wish you
+            </h2>
+
+            <div class="wish-list">
+
+                <div>Happiness.</div>
+
+                <div>Peace.</div>
+
+                <div>Success.</div>
+
+                <div>Beautiful moments.</div>
+
+            </div>
+
+            <p>
+                And a year worth remembering.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         COUNTDOWN
+    ========================== -->
+
+    <section id="countdownScene" class="scene">
+
+        <div class="countdown-content">
+
+            <div class="tiny">
+                GET READY
+            </div>
+
+            <div id="countdown" class="countdown">
+                3
+            </div>
+
+            <div class="countdown-label">
+                MAKE A WISH
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CAKE
+    ========================== -->
+
+    <section id="cakeScene" class="scene">
+
+        <div class="cake-content">
+
+            <div class="cake">
+
+                <!-- Candles -->
+
+                <div class="candle candle-one">
+                    <div class="flame"></div>
+                </div>
+
+                <div class="candle candle-two">
+                    <div class="flame"></div>
+                </div>
+
+                <div class="candle candle-three">
+                    <div class="flame"></div>
+                </div>
+
+
+                <!-- Cake -->
+
+                <div class="cake-top">
+
+                    <div class="cream"></div>
+
+                </div>
+
+                <div class="cake-body">
+
+                    <span>●</span>
+                    <span>●</span>
+                    <span>●</span>
+                    <span>●</span>
+
+                </div>
+
+            </div>
+
+
+            <div id="blowMessage" class="blow-message">
+                MAKE A WISH ✨
+            </div>
+
+
+            <button id="blowBtn" class="main-button">
+                TAP TO BLOW
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FINAL SCREEN
+    ========================== -->
+
+    <section id="finalScene" class="scene final-scene">
+
+        <canvas id="fireworks"></canvas>
+
+        <div id="confetti" class="confetti"></div>
+
+
+        <div class="final-content">
+
+            <div class="final-small">
+                ONCE AGAIN...
+            </div>
+
+            <h2 class="happy">
+                HAPPY
+            </h2>
+
+            <h1 class="birthday">
+                BIRTHDAY
+            </h1>
+
+            <h2 class="final-name">
+                ABHIGNA
+            </h2>
+
+            <div class="final-line"></div>
+
+            <p>
+                May your smile never fade,
+                your dreams never stop,
+                and your heart always have
+                something beautiful
+                to look forward to.
+            </p>
+
+            <div class="love">
+                With lots of love ❤️
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
