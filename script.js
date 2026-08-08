@@ -11,7 +11,7 @@
     CHANGE PASSWORD HERE
 */
 
-const SECRET_PASSWORD = "abhigna";
+const SECRET_PASSWORD = "23-09-2007";
 
 
 const passwordScreen =
