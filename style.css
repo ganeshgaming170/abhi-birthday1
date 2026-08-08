@@ -1,0 +1,1068 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: #000;
+    color: #fff;
+
+    font-family:
+        "Montserrat",
+        sans-serif;
+}
+
+:root {
+    --gold: #d9ad68;
+    --gold-light: #f4d39b;
+    --pink: #ff8ca8;
+}
+
+
+/* =========================================
+   GRAIN
+========================================= */
+
+.grain {
+    position: fixed;
+    inset: -50%;
+
+    width: 200%;
+    height: 200%;
+
+    pointer-events: none;
+
+    z-index: 5000;
+
+    opacity: .045;
+
+    background-image:
+        url(
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"
+        );
+
+    animation:
+        grainMove .2s steps(2) infinite;
+}
+
+@keyframes grainMove {
+
+    0% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(2%, -2%);
+    }
+
+    50% {
+        transform: translate(-2%, 2%);
+    }
+
+    75% {
+        transform: translate(2%, 2%);
+    }
+
+    100% {
+        transform: translate(-2%, -2%);
+    }
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+#stars {
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+.star {
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    opacity: .5;
+
+    animation:
+        starFloat linear infinite,
+        twinkle 2s infinite alternate;
+}
+
+@keyframes starFloat {
+
+    from {
+        transform: translateY(100vh);
+    }
+
+    to {
+        transform: translateY(-10vh);
+    }
+}
+
+@keyframes twinkle {
+
+    from {
+        opacity: .1;
+    }
+
+    to {
+        opacity: .9;
+    }
+}
+
+
+/* =========================================
+   SCENES
+========================================= */
+
+.scene {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: scale(1.08);
+
+    transition:
+        opacity 1s ease,
+        transform 1.2s
+        cubic-bezier(.2, .8, .2, 1),
+        visibility 1s;
+
+    z-index: 10;
+}
+
+.scene.active {
+    opacity: 1;
+    visibility: visible;
+
+    transform: scale(1);
+}
+
+
+/* =========================================
+   PASSWORD
+========================================= */
+
+.password-screen {
+    position: fixed;
+    inset: 0;
+
+    z-index: 10000;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(217, 173, 104, .12),
+            transparent 35%
+        ),
+        #020202;
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.password-screen.hide {
+    opacity: 0;
+
+    transform: scale(1.15);
+
+    pointer-events: none;
+}
+
+.password-content {
+    width: min(90%, 450px);
+}
+
+.lock {
+    font-size: 38px;
+
+    margin-bottom: 25px;
+
+    animation:
+        lockFloat 2s
+        ease-in-out infinite;
+}
+
+@keyframes lockFloat {
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.private-text {
+    font-size: 8px;
+
+    letter-spacing: 6px;
+
+    color: var(--gold);
+
+    margin-bottom: 25px;
+}
+
+.password-content h1 {
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-weight: 400;
+
+    font-size:
+        clamp(55px, 14vw, 100px);
+
+    line-height: .8;
+}
+
+.password-content h1 span {
+    color: var(--gold);
+
+    font-style: italic;
+}
+
+.password-content p {
+    margin-top: 30px;
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 11px;
+}
+
+.password-box {
+    margin-top: 30px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.password-box input {
+    width: 100%;
+
+    padding: 17px;
+
+    background:
+        rgba(255,255,255,.04);
+
+    border:
+        1px solid
+        rgba(217,173,104,.35);
+
+    color: white;
+
+    outline: none;
+
+    text-align: center;
+
+    font-size: 14px;
+
+    letter-spacing: 3px;
+}
+
+.password-box input:focus {
+    border-color: var(--gold);
+
+    box-shadow:
+        0 0 25px
+        rgba(217,173,104,.15);
+}
+
+.password-box button {
+    padding: 16px;
+
+    border: none;
+
+    background: var(--gold);
+
+    color: #000;
+
+    font-weight: 600;
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.password-box button:hover {
+    background: var(--gold-light);
+
+    box-shadow:
+        0 0 30px
+        rgba(217,173,104,.35);
+}
+
+#passwordError {
+    opacity: 0;
+
+    margin-top: 15px;
+
+    color: var(--pink);
+
+    font-size: 10px;
+}
+
+#passwordError.show {
+    opacity: 1;
+
+    animation:
+        shake .35s ease;
+}
+
+@keyframes shake {
+
+    25% {
+        transform: translateX(-8px);
+    }
+
+    75% {
+        transform: translateX(8px);
+    }
+}
+
+
+/* =========================================
+   INTRO
+========================================= */
+
+.intro-scene {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(217,173,104,.08),
+            transparent 35%
+        ),
+        #000;
+}
+
+.intro-content {
+    text-align: center;
+}
+
+.intro-small {
+    font-size: 9px;
+
+    letter-spacing: 5px;
+
+    color:
+        rgba(255,255,255,.5);
+}
+
+.wait {
+    margin-top: 25px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(75px,18vw,170px);
+
+    line-height: .75;
+
+    font-weight: 400;
+
+    letter-spacing: -5px;
+}
+
+.typing {
+    margin-top: 35px;
+
+    min-height: 25px;
+
+    color: var(--gold);
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+}
+
+.main-button {
+    margin-top: 40px;
+
+    padding: 15px 30px;
+
+    background: transparent;
+
+    border:
+        1px solid
+        rgba(217,173,104,.5);
+
+    color: white;
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.main-button:hover {
+    background: var(--gold);
+
+    color: #000;
+
+    box-shadow:
+        0 0 35px
+        rgba(217,173,104,.35);
+}
+
+
+/* =========================================
+   NAME
+========================================= */
+
+.name-content {
+    text-align: center;
+}
+
+.tiny-gold {
+    color: var(--gold);
+
+    font-size: 9px;
+
+    letter-spacing: 8px;
+}
+
+.name-content p {
+    margin-top: 15px;
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 11px;
+}
+
+.hero-name {
+    margin-top: 25px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-weight: 400;
+
+    font-size:
+        clamp(70px,20vw,220px);
+
+    line-height: .7;
+
+    letter-spacing: -7px;
+
+    animation:
+        nameReveal 1.5s ease;
+}
+
+@keyframes nameReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(50px)
+            scale(.8);
+
+        filter: blur(15px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter: blur(0);
+    }
+}
+
+.gold-line {
+    width: 80px;
+
+    height: 1px;
+
+    background: var(--gold);
+
+    margin:
+        35px auto;
+}
+
+.name-content span {
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 10px;
+}
+
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+.message-content {
+    text-align: center;
+
+    width:
+        min(90%, 700px);
+}
+
+.message-number {
+    color: var(--gold);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 22px;
+}
+
+.short-line {
+    width: 50px;
+
+    height: 1px;
+
+    background: var(--gold);
+
+    margin:
+        20px auto 40px;
+}
+
+.message-content h2 {
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(38px,8vw,75px);
+
+    line-height: .9;
+
+    font-weight: 400;
+}
+
+.message-content h3 {
+    margin-top: 25px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(25px,6vw,45px);
+
+    color: var(--gold);
+
+    font-style: italic;
+
+    font-weight: 400;
+}
+
+.message-highlight {
+    margin-top: 35px;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    color:
+        rgba(255,255,255,.55);
+}
+
+
+/* =========================================
+   WISHES
+========================================= */
+
+.wish-content {
+    text-align: center;
+}
+
+.tiny {
+    font-size: 9px;
+
+    letter-spacing: 6px;
+
+    color:
+        rgba(255,255,255,.5);
+}
+
+.wish-content h2 {
+    margin-top: 30px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 50px;
+
+    font-weight: 400;
+}
+
+.wish-list {
+    margin-top: 35px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(35px,8vw,70px);
+
+    color: var(--gold);
+}
+
+.wish-list div {
+    animation:
+        wishReveal .8s ease both;
+}
+
+.wish-list div:nth-child(2) {
+    animation-delay: .2s;
+}
+
+.wish-list div:nth-child(3) {
+    animation-delay: .4s;
+}
+
+.wish-list div:nth-child(4) {
+    animation-delay: .6s;
+}
+
+@keyframes wishReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateX(-40px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateX(0);
+    }
+}
+
+.wish-content p {
+    margin-top: 40px;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    color:
+        rgba(255,255,255,.5);
+}
+
+
+/* =========================================
+   COUNTDOWN
+========================================= */
+
+.countdown-content {
+    text-align: center;
+}
+
+.countdown {
+    margin: 45px 0;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(160px,42vw,360px);
+
+    line-height: .65;
+
+    color: var(--gold);
+
+    text-shadow:
+        0 0 70px
+        rgba(217,173,104,.35);
+}
+
+.countdown-label {
+    font-size: 9px;
+
+    letter-spacing: 7px;
+
+    color:
+        rgba(255,255,255,.5);
+}
+
+
+/* =========================================
+   CAKE
+========================================= */
+
+.cake-content {
+    text-align: center;
+}
+
+.cake {
+    position: relative;
+
+    width: 230px;
+
+    height: 190px;
+
+    margin:
+        0 auto 25px;
+}
+
+.cake-body {
+    position: absolute;
+
+    bottom: 0;
+
+    left: 15px;
+
+    width: 200px;
+
+    height: 110px;
+
+    border-radius:
+        15px 15px 25px 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d99a74,
+            #914c38
+        );
+
+    box-shadow:
+        0 30px 60px
+        rgba(0,0,0,.7);
+}
+
+.cake-body span {
+    display: inline-block;
+
+    color: #ffd76e;
+
+    font-size: 16px;
+
+    margin: 20px 8px;
+}
+
+.cake-top {
+    position: absolute;
+
+    top: 45px;
+
+    left: 15px;
+
+    width: 200px;
+
+    height: 55px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffe5c8,
+            #e7a77d
+        );
+
+    z-index: 2;
+}
+
+.cream {
+    position: absolute;
+
+    top: 0;
+
+    width: 100%;
+
+    height: 32px;
+
+    background: #fff0dc;
+
+    border-radius: 50%;
+}
+
+.candle {
+    position: absolute;
+
+    top: 0;
+
+    width: 10px;
+
+    height: 55px;
+
+    border-radius: 3px;
+
+    background:
+        repeating-linear-gradient(
+            -45deg,
+            #fff,
+            #fff 5px,
+            #e89aaa 5px,
+            #e89aaa 10px
+        );
+
+    z-index: 10;
+}
+
+.candle-one {
+    left: 62px;
+}
+
+.candle-two {
+    left: 110px;
+}
+
+.candle-three {
+    right: 62px;
+}
+
+.flame {
+    position: absolute;
+
+    top: -20px;
+
+    left: -2px;
+
+    width: 14px;
+
+    height: 20px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 50% 70%,
+            #fff,
+            #ffd45c 40%,
+            #ff7a2f 75%
+        );
+
+    animation:
+        flame .3s infinite alternate;
+}
+
+@keyframes flame {
+
+    from {
+        transform: scaleY(1);
+    }
+
+    to {
+        transform:
+            scaleY(1.2)
+            rotate(3deg);
+    }
+}
+
+.blow-message {
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    color:
+        rgba(255,255,255,.6);
+}
+
+
+/* =========================================
+   FINAL
+========================================= */
+
+.final-scene {
+    background:
+        radial-gradient(
+            circle at center,
+            #25190d,
+            #050403 55%,
+            #000
+        );
+
+    overflow: hidden;
+}
+
+#fireworks {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+}
+
+.confetti {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+}
+
+.final-content {
+    position: relative;
+
+    z-index: 5;
+
+    text-align: center;
+
+    width:
+        min(90%, 850px);
+}
+
+.final-small {
+    font-size: 9px;
+
+    letter-spacing: 7px;
+
+    color:
+        rgba(255,255,255,.5);
+}
+
+.happy,
+.birthday,
+.final-name {
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-weight: 400;
+
+    line-height: .75;
+}
+
+.happy {
+    margin-top: 35px;
+
+    font-size:
+        clamp(45px,9vw,90px);
+}
+
+.birthday {
+    font-size:
+        clamp(70px,16vw,170px);
+
+    color: var(--gold);
+
+    font-style: italic;
+
+    text-shadow:
+        0 0 50px
+        rgba(217,173,104,.3);
+}
+
+.final-name {
+    margin-top: 25px;
+
+    font-size:
+        clamp(45px,10vw,100px);
+
+    letter-spacing: 4px;
+}
+
+.final-line {
+    width: 80px;
+
+    height: 1px;
+
+    background: var(--gold);
+
+    margin:
+        35px auto;
+}
+
+.final-content p {
+    max-width: 550px;
+
+    margin: auto;
+
+    color:
+        rgba(255,255,255,.7);
+
+    line-height: 1.8;
+
+    font-size: 12px;
+}
+
+.love {
+    margin-top: 30px;
+
+    color: var(--gold);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 24px;
+
+    font-style: italic;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:600px) {
+
+    .hero-name {
+        letter-spacing: -4px;
+    }
+
+    .final-content p {
+        padding: 0 20px;
+    }
+
+    .password-content h1 {
+        font-size: 65px;
+    }
+
+}
